@@ -3,7 +3,7 @@ const panel = document.getElementById('panel');
 const chev = document.getElementById('chev');
 const main = document.querySelector('main');
 
-// 1️⃣ Initial render: শুধু Moner Bondhu title box
+
 function renderInitial() {
   main.innerHTML = `
   <div class="flex flex-col items-center justify-center px-6 mt-6 gap-6">
@@ -16,13 +16,13 @@ function renderInitial() {
   `;
 }
 
-// 2️⃣ Dashboard toggle
+
 dashBtn.addEventListener('click', () => {
   panel.classList.toggle('open');
   chev.classList.toggle('rot');
 });
 
-// 3️⃣ Close panel on click outside
+
 document.addEventListener('click', (e) => {
   if (!dashBtn.contains(e.target) && !panel.contains(e.target)) {
     panel.classList.remove('open');
@@ -30,19 +30,19 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// 4️⃣ Dashboard links
+
 const links = panel.querySelectorAll('a');
 
-// 5️⃣ Home link logic
+
 const homeLink = Array.from(links).find(a => a.dataset.section === 'home');
 homeLink.addEventListener('click', (e) => {
   e.preventDefault();
 
-  // Remove old mental health box if exists
+ 
   const mentalBox = main.querySelector('#mentalHealthCheck');
   if (mentalBox) mentalBox.remove();
 
-  // Add paragraph box
+ 
   const paraBox = document.createElement('div');
   paraBox.className = "moner-box para-box relative flex flex-col items-center justify-center p-6 rounded-3xl shadow-2xl bg-indigo-50 animate-fadein w-full max-w-3xl mt-4";
   paraBox.innerHTML = `
@@ -53,7 +53,7 @@ homeLink.addEventListener('click', (e) => {
   main.appendChild(paraBox);
 });
 
-// 6️⃣ মানসিক স্বাস্থ্য যাচাই link
+
 const mentalCheckLink = Array.from(links).find(a => a.dataset.section === 'checkup');
 mentalCheckLink.addEventListener('click', (e) => {
   e.preventDefault();
@@ -113,16 +113,16 @@ mentalCheckLink.addEventListener('click', (e) => {
     });
   });
 
-  // Submit button logic (advice)
+
   const submitBtn = document.getElementById('submitMood');
   submitBtn.addEventListener('click', () => {
     const adviceSection = document.getElementById('adviceSection');
-    adviceSection.innerHTML = ''; // clear previous advice
+    adviceSection.innerHTML = ''; 
 
     const selectedEmoji = document.querySelector('.emoji.scale-125');
     const sadRadio = document.querySelector('input[name="sad"]:checked');
 
-    // Advice array
+  
     const advices = [];
 
     if (selectedEmoji && parseInt(selectedEmoji.dataset.value) >= 4) {
