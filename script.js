@@ -64,7 +64,7 @@ mentalCheckLink.addEventListener('click', (e) => {
 
   main.innerHTML = `
   <div id="mentalHealthCheck" class="mental-check flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein mt-6">
-    <!-- Box 1: আজকের মানসিক অবস্থা -->
+    
     <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col items-center gap-3">
       <h2 class="text-xl font-bold text-indigo-700">আজকের মানসিক অবস্থা</h2>
       <div class="flex gap-4 text-3xl">
@@ -81,7 +81,7 @@ mentalCheckLink.addEventListener('click', (e) => {
       </div>
     </div>
 
-    <!-- Box 2: আপনি কি বিষণ্ণ -->
+  
     <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-2">
       <h2 class="text-xl font-bold text-indigo-700">আপনি কি বিষণ্ণ আজকে?</h2>
       <div class="flex gap-4">
@@ -90,15 +90,15 @@ mentalCheckLink.addEventListener('click', (e) => {
       </div>
     </div>
 
-    <!-- Box 3: আজকের পরামর্শ + Submit -->
+   
     <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
       <h2 class="text-xl font-bold text-indigo-700">আজকের পরামর্শ</h2>
       <p class="text-indigo-600 text-sm">আপনার বর্তমান মানসিক অবস্থা অনুযায়ী পরামর্শ</p>
       <button id="submitMood" class="mt-2 px-4 py-2 bg-indigo-700 text-white rounded-xl hover:bg-indigo-600 transition">Submit</button>
 
-      <!-- Advice section -->
+
       <div id="adviceSection" class="mt-4 flex flex-col gap-2">
-        <!-- ছোট ছোট box এখানে JS দিয়ে বসানো হবে -->
+      
       </div>
     </div>
   </div>
@@ -131,7 +131,7 @@ mentalCheckLink.addEventListener('click', (e) => {
       advices.push(' আপনার প্রিয় কাজ করুন।'); 
       
     } else {
-      advices.push('আজ মন খারাপ থাকলে কিছু ধর্মীয় বানী(কুরআন তিলাওয়াত বা ওন্নয ধর্মাবলম্বীরা তাদের নিজ ধর্মগ্রন্থ শুনুন) ।');
+      advices.push('আজ মন খারাপ থাকলে কিছু ধর্মীয় বানী(কুরআন তিলাওয়াত এবং অন্যান্য ধর্মাবলম্বীরা তাদের নিজ ধর্মগ্রন্থ পাথ করুন) ।');
       advices.push('হালকা হাঁটাচলা করুন বা আপনার প্রিয় কাজ করুন।');
     }
 
