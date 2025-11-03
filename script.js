@@ -153,3 +153,40 @@ mentalCheckLink.addEventListener('click', (e) => {
 
 // 🔹 Call initial render on page load
 renderInitial();
+function renderPregnancy() {
+  main.innerHTML = `
+  <div class="pregnancy-section flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
+
+    <!-- Box 1: Nutrition Tips -->
+    <div class="box p-4 rounded-2xl shadow-lg bg-rose-50 flex flex-col gap-3">
+      <h2 class="text-xl font-bold text-rose-700">পুষ্টি ও খাদ্য</h2>
+      <div class="flex flex-col gap-2">
+        <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিনে পর্যাপ্ত পানি পান করুন।</div>
+        <div class="p-2 bg-white rounded-xl shadow-inner">শাকসবজি ও ফলের পরিমাণ বাড়ান।</div>
+        <div class="p-2 bg-white rounded-xl shadow-inner">প্রোটিন ও ক্যালসিয়াম যুক্ত খাবার খান।</div>
+      </div>
+    </div>
+
+    <!-- Box 2: Exercise & Rest -->
+    <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-3">
+      <h2 class="text-xl font-bold text-green-700">ব্যায়াম ও বিশ্রাম</h2>
+      <div class="flex flex-col gap-2">
+        <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিন হালকা হাঁটাহাঁটি করুন।</div>
+        <div class="p-2 bg-white rounded-xl shadow-inner">বিশ্রামের জন্য পর্যাপ্ত সময় নিন।</div>
+        <div class="p-2 bg-white rounded-xl shadow-inner">ঘুম কমপক্ষে ৭-৮ ঘণ্টা নিশ্চিত করুন।</div>
+      </div>
+    </div>
+
+    <!-- Box 3: Mental Health & Tips -->
+    <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
+      <h2 class="text-xl font-bold text-indigo-700">মানসিক সুস্থতা ও পরামর্শ</h2>
+      <div class="flex flex-col gap-2">
+        <div class="p-2 bg-white rounded-xl shadow-inner">ধ্যান বা শ্বাস-প্রশ্বাস অনুশীলন করুন।</div>
+        <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে খোলাখুলিভাবে কথা বলুন।</div>
+        <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন।</div>
+      </div>
+    </div>
+
+  </div>
+  `;
+}
