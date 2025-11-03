@@ -126,15 +126,19 @@ mentalCheckLink.addEventListener('click', (e) => {
     const advices = [];
 
     if (selectedEmoji && parseInt(selectedEmoji.dataset.value) >= 4) {
-      advices.push('আজ মন ভালো আছে, ধন্যবাদ ধরে রাখার চেষ্টা করুন।');
-      advices.push('হালকা ব্যায়াম করুন বা গান শুনুন।');
+      advices.push('আজ মনের ভালো লাগা ধরে রাখার চেষ্টা করুন।');
+      advices.push('হালকা ব্যায়াম করুন।');
+      advices.push(' আপনার প্রিয় কাজ করুন।'); 
+      
     } else {
-      advices.push('আজ মন খারাপ থাকলে কিছু ধ্যান করুন বা কেউ সাথে কথা বলুন।');
+      advices.push('আজ মন খারাপ থাকলে কিছু ধর্মীয় বানী(কুরআন তিলাওয়াত বা ওন্নয ধর্মাবলম্বীরা তাদের নিজ ধর্মগ্রন্থ শুনুন) ।');
       advices.push('হালকা হাঁটাচলা করুন বা আপনার প্রিয় কাজ করুন।');
     }
 
     if (sadRadio && sadRadio.value === 'yes') {
-      advices.push('আপনি বললেন আপনি বিষণ্ণ, মানসিক সহায়তা নেওয়ার চেষ্টা করুন।');
+      advices.push('আপনি বললেন আপনি বিষণ্ণ, অ্যাপের সাহায্যে মানসিক সহায়তা নিন।');
+      advices.push('পরিবারের সবথেকে কাছের মানুষের সাথে খোলামেলা আলোচনা করুন।');    
+      advices.push('একা না থেকে নিজেকে দৈনন্দিন কাজে ব্যস্ত রাখুন।');
     }
 
     // Insert advice boxes
