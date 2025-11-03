@@ -122,8 +122,8 @@ function renderMentalCheck() {
       advices.push('হালকা ব্যায়াম করুন।');
       advices.push('আপনার প্রিয় কাজ করুন।');
     } else {
-      advices.push('আজ মন খারাপ থাকলে কিছু ধর্মীয় বানী পড়ুন।');
-      advices.push('হালকা হাঁটাচলা করুন বা আপনার প্রিয় কাজ করুন।');
+      advices.push(' কিছু ধর্মীয় বানী পড়ুন।');
+      advices.push('প্রিয় কোনো জায়গায় ঘুরতে যান।');
     }
 
     if (sadRadio && sadRadio.value === 'yes') {
@@ -147,7 +147,7 @@ function renderPregnancy() {
     <div class="pregnancy-section flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
 
       <div class="box p-4 rounded-2xl shadow-lg bg-rose-50 flex flex-col gap-3">
-        <h2 class="text-xl font-bold text-rose-700">পুষ্টি ও খাদ্য</h2>
+        <h2 class="text-xl font-bold text-rose-700">🍅পুষ্টি ও খাদ্য</h2>
         <div class="flex flex-col gap-2">
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিনে পর্যাপ্ত পানি পান করুন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">শাকসবজি ও ফলের পরিমাণ বাড়ান।</div>
@@ -156,7 +156,7 @@ function renderPregnancy() {
       </div>
 
       <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-3">
-        <h2 class="text-xl font-bold text-green-700">ব্যায়াম ও বিশ্রাম</h2>
+        <h2 class="text-xl font-bold text-green-700">🙆🏻‍♀️ব্যায়াম ও বিশ্রাম</h2>
         <div class="flex flex-col gap-2">
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিন হালকা হাঁটাহাঁটি করুন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">পর্যাপ্ত বিশ্রাম নিন।</div>
@@ -165,10 +165,10 @@ function renderPregnancy() {
       </div>
 
       <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
-        <h2 class="text-xl font-bold text-indigo-700">মানসিক সুস্থতা ও পরামর্শ</h2>
+        <h2 class="text-xl font-bold text-indigo-700">👩🏻‍⚕️মানসিক সুস্থতা ও পরামর্শ</h2>
         <div class="flex flex-col gap-2">
-          <div class="p-2 bg-white rounded-xl shadow-inner">ধ্যান বা শ্বাস-প্রশ্বাস অনুশীলন করুন।</div>
-          <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে খোলাখুলিভাবে কথা বলুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">শ্বাস-প্রশ্বাস অনুশীলন করুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে কথা বলুন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন।</div>
         </div>
       </div>
