@@ -3,7 +3,7 @@ const panel = document.getElementById('panel');
 const chev = document.getElementById('chev');
 const main = document.querySelector('main');
 
-
+// Initial render
 function renderInitial() {
   main.innerHTML = `
     <div class="flex flex-col items-center justify-center px-6 mt-6 gap-6">
@@ -22,7 +22,6 @@ dashBtn.addEventListener('click', () => {
   chev.classList.toggle('rot');
 });
 
-// Close panel if clicked outside
 document.addEventListener('click', (e) => {
   if (!dashBtn.contains(e.target) && !panel.contains(e.target)) {
     panel.classList.remove('open');
@@ -32,12 +31,11 @@ document.addEventListener('click', (e) => {
 
 const links = panel.querySelectorAll('a');
 
-
+// Home
 const homeLink = Array.from(links).find(a => a.dataset.section === 'home');
 homeLink.addEventListener('click', (e) => {
   e.preventDefault();
   renderInitial();
-
   const paraBox = document.createElement('div');
   paraBox.className = "moner-box para-box relative flex flex-col items-center justify-center p-6 rounded-3xl shadow-2xl bg-indigo-50 animate-fadein w-full max-w-3xl mt-4";
   paraBox.innerHTML = `
@@ -48,7 +46,7 @@ homeLink.addEventListener('click', (e) => {
   main.appendChild(paraBox);
 });
 
-
+// Mental Health Check
 const mentalCheckLink = Array.from(links).find(a => a.dataset.section === 'checkup');
 mentalCheckLink.addEventListener('click', (e) => {
   e.preventDefault();
@@ -112,7 +110,7 @@ function renderMentalCheck() {
       advices.push('হালকা ব্যায়াম করুন।');
       advices.push('আপনার প্রিয় কাজ করুন।');
     } else {
-      advices.push(' কিছু ধর্মীয় বানী পড়ুন।');
+      advices.push('কিছু ধর্মীয় বানী পড়ুন।');
       advices.push('প্রিয় কোনো জায়গায় ঘুরতে যান।');
     }
 
@@ -131,7 +129,7 @@ function renderMentalCheck() {
   });
 }
 
-
+// Pregnancy
 const pregnancyLink = Array.from(links).find(a => a.dataset.section === 'pregnancy');
 pregnancyLink.addEventListener('click', (e) => {
   e.preventDefault();
@@ -149,7 +147,6 @@ function renderPregnancy() {
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিনে পর্যাপ্ত পানি পান করুন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">শাকসবজি ও ফলের পরিমাণ বাড়ান।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রোটিন ও ক্যালসিয়াম যুক্ত খাবার খান।</div>
-           <div class="p-2 bg-white rounded-xl shadow-inner">প্রসব পরবর্তী সময়ে রক্তশূন্যতা রোধে </div>
         </div>
       </div>
 
@@ -160,7 +157,6 @@ function renderPregnancy() {
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিন হালকা হাঁটাহাঁটি করুন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">পর্যাপ্ত বিশ্রাম নিন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">ঘুম কমপক্ষে ৭-৮ ঘণ্টা নিশ্চিত করুন।</div>
-           <div class="p-2 bg-white rounded-xl shadow-inner">প্রসব পরবর্তী সময়ে অতিরিক্ত ব্যায়াম না করা ও পর্যাপ্ত ঘুম নিশ্চিত করা।</div>
         </div>
       </div>
 
@@ -168,9 +164,9 @@ function renderPregnancy() {
       <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-indigo-700">👩🏻‍⚕️ মানসিক সুস্থতা ও পরামর্শ</h2>
         <div class="flex flex-col gap-2">
-          <div class="p-2 bg-white rounded-xl shadow-inner"> শ্বাস-প্রশ্বাস অনুশীলন করুন(প্রসব পূর্ব ও পরবর্তী)।</div>
-          <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে খোলাখুলিভাবে কথা বলুন(প্রসব পূর্ব ও পরবর্তী)।</div>
-          <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন(প্রসব পূর্ব ও পরবর্তী)।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">শ্বাস-প্রশ্বাস অনুশীলন করুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে কথা বলুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন।</div>
         </div>
       </div>
 
@@ -178,7 +174,7 @@ function renderPregnancy() {
   `;
 }
 
-
+// Seasonal
 const seasonalLink = Array.from(links).find(a => a.dataset.section === 'seasonal');
 seasonalLink.addEventListener('click', (e) => {
   e.preventDefault();
@@ -204,7 +200,7 @@ function renderSeasonal() {
 
       <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex flex-col gap-2 w-[45%]">
         <h2 class="text-xl font-bold text-yellow-800">☀️ গ্রীষ্মকাল (মার্চ-মে)</h2>
-        <div class="small-box">মুখে পানীয় দ্রবণ (Oral Rehydration Therapy)</div>
+        <div class="small-box">মুখে পানীয় দ্রবণ</div>
         <div class="small-box">পরিষ্কার পানি পান করুন</div>
         <div class="small-box">হিটস্ট্রোক প্রতিরোধ</div>
       </div>
@@ -218,10 +214,18 @@ function renderSeasonal() {
     </div>
   `;
 }
+
+// Common Illness
+const illnessLink = Array.from(links).find(a => a.dataset.section === 'common-illness');
+illnessLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  renderCommonIllness();
+});
+
 function renderCommonIllness() {
   main.innerHTML = `
     <div class="common-illness-section flex flex-wrap justify-between gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
-      
+
       <!-- শিশু -->
       <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
         <h2 class="text-xl font-bold text-yellow-700">শিশু রোগ</h2>
@@ -232,7 +236,7 @@ function renderCommonIllness() {
           <li>হাম – কানে ব্যথা বা কান ফুলে যেতে পারে</li>
         </ul>
       </div>
-      
+
       <!-- মধ্যবয়স্ক -->
       <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
         <h2 class="text-xl font-bold text-green-700">মধ্যবয়স্ক</h2>
@@ -256,14 +260,15 @@ function renderCommonIllness() {
     </div>
   `;
 
-  // Optional: click effect to highlight selected box
+  // Click effect
   const boxes = document.querySelectorAll('.illness-box');
   boxes.forEach(box => {
     box.addEventListener('click', () => {
       boxes.forEach(b => b.classList.remove('ring-4', 'ring-indigo-400'));
-      box.classList.add('ring-4', 'ring-indigo-400'); // Tailwind ring effect
+      box.classList.add('ring-4', 'ring-indigo-400');
     });
   });
 }
 
+// Initial render
 renderInitial();
