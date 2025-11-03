@@ -125,3 +125,39 @@ main > div {
     font-size: 0.95rem; /* readable paragraph on mobile */
   }
 }
+.adviceBox div {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.adviceBox div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(99,102,241,0.3);
+}
+.advice-box {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f0f8ff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.small-box {
+  width: 45%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  margin: 10px 0;
+}
+
+.small-box h3 {
+  color: #3b5998;
+  margin-bottom: 10px;
+}
+
+.small-box ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
