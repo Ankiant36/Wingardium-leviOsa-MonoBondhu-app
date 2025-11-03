@@ -218,6 +218,52 @@ function renderSeasonal() {
     </div>
   `;
 }
+function renderCommonIllness() {
+  main.innerHTML = `
+    <div class="common-illness-section flex flex-wrap justify-between gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
+      
+      <!-- শিশু -->
+      <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
+        <h2 class="text-xl font-bold text-yellow-700">শিশু রোগ</h2>
+        <ul class="mt-2 list-disc list-inside text-yellow-800 text-sm">
+          <li>পোলিও – জ্বর হতে পারে</li>
+          <li>সর্দি – নাক/গলা বন্ধ হতে পারে</li>
+          <li>হাপানি – শ্বাস নিতে কষ্ট </li>
+          <li>হাম – কানে ব্যথা বা কান ফুলে যেতে পারে</li>
+        </ul>
+      </div>
+      
+      <!-- মধ্যবয়স্ক -->
+      <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
+        <h2 class="text-xl font-bold text-green-700">মধ্যবয়স্ক</h2>
+        <ul class="mt-2 list-disc list-inside text-green-800 text-sm">
+          <li>সাধারণ জ্বর:মাথাব্যথা</li>
+          <li>বুকে ব্যথা : বুকে ভার অনুভূত হওয়া</li>
+          <li>হালকা সর্দি,কাশি</li>
+        </ul>
+      </div>
 
+      <!-- বৃদ্ধ -->
+      <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
+        <h2 class="text-xl font-bold text-indigo-700">বৃদ্ধ</h2>
+        <ul class="mt-2 list-disc list-inside text-indigo-800 text-sm">
+          <li>সাধারণ জ্বর ও ক্লান্তি</li>
+          <li>হৃদরোগ বা রক্তচাপ সমস্যা</li>
+          <li>শ্বাসকষ্ট বা শারীরিক সমস্যা বাড়তে থাকা</li>
+        </ul>
+      </div>
+
+    </div>
+  `;
+
+  // Optional: click effect to highlight selected box
+  const boxes = document.querySelectorAll('.illness-box');
+  boxes.forEach(box => {
+    box.addEventListener('click', () => {
+      boxes.forEach(b => b.classList.remove('ring-4', 'ring-indigo-400'));
+      box.classList.add('ring-4', 'ring-indigo-400'); // Tailwind ring effect
+    });
+  });
+}
 
 renderInitial();
