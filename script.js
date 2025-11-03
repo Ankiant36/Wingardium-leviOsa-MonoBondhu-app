@@ -140,32 +140,37 @@ pregnancyLink.addEventListener('click', (e) => {
 
 function renderPregnancy() {
   main.innerHTML = `
-    <div class="pregnancy-section flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
+    <div class="pregnancy-section flex flex-wrap gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-6xl mx-auto animate-fadein justify-center">
 
-      <div class="box p-4 rounded-2xl shadow-lg bg-rose-50 flex flex-col gap-3">
+      <!-- পুষ্টি ও খাদ্য -->
+      <div class="box p-4 rounded-2xl shadow-lg bg-rose-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-rose-700">🍅 পুষ্টি ও খাদ্য</h2>
         <div class="flex flex-col gap-2">
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিনে পর্যাপ্ত পানি পান করুন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">শাকসবজি ও ফলের পরিমাণ বাড়ান।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রোটিন ও ক্যালসিয়াম যুক্ত খাবার খান।</div>
+           <div class="p-2 bg-white rounded-xl shadow-inner">প্রসব পরবর্তী সময়ে রক্তশূন্যতা রোধে </div>
         </div>
       </div>
 
-      <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-3">
+      <!-- ব্যায়াম ও বিশ্রাম -->
+      <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-green-700">🙆🏻‍♀️ ব্যায়াম ও বিশ্রাম</h2>
         <div class="flex flex-col gap-2">
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিন হালকা হাঁটাহাঁটি করুন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">পর্যাপ্ত বিশ্রাম নিন।</div>
           <div class="p-2 bg-white rounded-xl shadow-inner">ঘুম কমপক্ষে ৭-৮ ঘণ্টা নিশ্চিত করুন।</div>
+           <div class="p-2 bg-white rounded-xl shadow-inner">প্রসব পরবর্তী সময়ে অতিরিক্ত ব্যায়াম না করা ও পর্যাপ্ত ঘুম নিশ্চিত করা।</div>
         </div>
       </div>
 
-      <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
+      <!-- মানসিক সুস্থতা ও পরামর্শ -->
+      <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-indigo-700">👩🏻‍⚕️ মানসিক সুস্থতা ও পরামর্শ</h2>
         <div class="flex flex-col gap-2">
-          <div class="p-2 bg-white rounded-xl shadow-inner">শ্বাস-প্রশ্বাস অনুশীলন করুন।</div>
-          <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে কথা বলুন।</div>
-          <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner"> শ্বাস-প্রশ্বাস অনুশীলন করুন(প্রসব পূর্ব ও পরবর্তী)।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে খোলাখুলিভাবে কথা বলুন(প্রসব পূর্ব ও পরবর্তী)।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন(প্রসব পূর্ব ও পরবর্তী)।</div>
         </div>
       </div>
 
