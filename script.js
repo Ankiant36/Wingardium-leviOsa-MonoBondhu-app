@@ -122,3 +122,38 @@ mentalCheckLink.addEventListener('click', (e) => {
 
 // Call initial render on page load
 renderInitial();
+const submitBtn = document.getElementById('submitBtn');
+const adviceSection = document.getElementById('adviceSection');
+
+submitBtn.addEventListener('click', () => {
+  adviceSection.innerHTML = '';
+
+  const bigBox = document.createElement('div');
+  bigBox.classList.add('advice-box');
+
+  const goodMood = document.createElement('div');
+  goodMood.classList.add('small-box');
+  goodMood.innerHTML = `
+    <h3>😊 মন ভালো থাকলে করণীয়</h3>
+    <ul>
+      <li>ভালো লাগার কারণটা লিখে রাখো।</li>
+      <li>যাদের ভালোবাসো তাদের সঙ্গে সময় কাটাও।</li>
+      <li>ধ্যান বা প্রার্থনা করে কৃতজ্ঞতা প্রকাশ করো।</li>
+    </ul>
+  `;
+
+  const badMood = document.createElement('div');
+  badMood.classList.add('small-box');
+  badMood.innerHTML = `
+    <h3>😔 মন খারাপ থাকলে করণীয়</h3>
+    <ul>
+      <li>গভীরভাবে শ্বাস নাও ও ধীরে ছাড়ো।</li>
+      <li>একটু হাঁটতে বের হও বা গান শোনো।</li>
+      <li>কোনো কাছের জনের সঙ্গে কথা বলো।</li>
+    </ul>
+  `;
+
+  bigBox.appendChild(goodMood);
+  bigBox.appendChild(badMood);
+  adviceSection.appendChild(bigBox);
+});
