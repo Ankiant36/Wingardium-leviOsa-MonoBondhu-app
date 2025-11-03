@@ -3,16 +3,15 @@ const panel = document.getElementById('panel');
 const chev = document.getElementById('chev');
 const main = document.querySelector('main');
 
-
 function renderInitial() {
   main.innerHTML = `
-  <div class="flex flex-col items-center justify-center px-6 mt-6 gap-6">
-    <div class="moner-box relative flex items-center justify-center p-8 rounded-3xl shadow-2xl bg-gradient-to-r from-indigo-200 via-indigo-100 to-indigo-200 animate-bounce-slow w-full max-w-3xl">
-      <h1 class="text-5xl font-extrabold text-indigo-800 tracking-wider glow-text text-center">
-        মনোবন্ধু
-      </h1>
+    <div class="flex flex-col items-center justify-center px-6 mt-6 gap-6">
+      <div class="moner-box relative flex items-center justify-center p-8 rounded-3xl shadow-2xl bg-gradient-to-r from-indigo-200 via-indigo-100 to-indigo-200 animate-bounce-slow w-full max-w-3xl">
+        <h1 class="text-5xl font-extrabold text-indigo-800 tracking-wider glow-text text-center">
+          মনোবন্ধু
+        </h1>
+      </div>
     </div>
-  </div>
   `;
 }
 
@@ -22,7 +21,7 @@ dashBtn.addEventListener('click', () => {
   chev.classList.toggle('rot');
 });
 
-
+// Close panel if clicked outside
 document.addEventListener('click', (e) => {
   if (!dashBtn.contains(e.target) && !panel.contains(e.target)) {
     panel.classList.remove('open');
@@ -37,12 +36,8 @@ const links = panel.querySelectorAll('a');
 const homeLink = Array.from(links).find(a => a.dataset.section === 'home');
 homeLink.addEventListener('click', (e) => {
   e.preventDefault();
+  renderInitial();
 
- 
-  const mentalBox = main.querySelector('#mentalHealthCheck');
-  if (mentalBox) mentalBox.remove();
-
- 
   const paraBox = document.createElement('div');
   paraBox.className = "moner-box para-box relative flex flex-col items-center justify-center p-6 rounded-3xl shadow-2xl bg-indigo-50 animate-fadein w-full max-w-3xl mt-4";
   paraBox.innerHTML = `
@@ -53,58 +48,59 @@ homeLink.addEventListener('click', (e) => {
   main.appendChild(paraBox);
 });
 
-
+// Mental Health Check link
 const mentalCheckLink = Array.from(links).find(a => a.dataset.section === 'checkup');
 mentalCheckLink.addEventListener('click', (e) => {
   e.preventDefault();
+  renderMentalCheck();
+});
 
-  // Remove old paragraph box
-  const oldPara = main.querySelector('.para-box');
-  if (oldPara) oldPara.remove();
+// Pregnancy link
+const pregnancyLink = Array.from(links).find(a => a.dataset.section === 'pregnancy');
+pregnancyLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  renderPregnancy();
+});
 
+
+function renderMentalCheck() {
   main.innerHTML = `
-  <div id="mentalHealthCheck" class="mental-check flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein mt-6">
-    
-    <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col items-center gap-3">
-      <h2 class="text-xl font-bold text-indigo-700">আজকের মানসিক অবস্থা</h2>
-      <div class="flex gap-4 text-3xl">
-        <span class="cursor-pointer emoji" data-value="1">😢</span>
-        <span class="cursor-pointer emoji" data-value="2">😔</span>
-        <span class="cursor-pointer emoji" data-value="3">😐</span>
-        <span class="cursor-pointer emoji" data-value="4">🙂</span>
-        <span class="cursor-pointer emoji" data-value="5">😃</span>
-      </div>
-      <input type="range" min="0" max="10" value="5" class="w-full mt-2" id="energyRange">
-      <div class="flex justify-between w-full text-sm text-indigo-600">
-        <span>Low</span>
-        <span>High</span>
-      </div>
-    </div>
-
-  
-    <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-2">
-      <h2 class="text-xl font-bold text-indigo-700">আপনি কি বিষণ্ণ আজকে?</h2>
-      <div class="flex gap-4">
-        <label class="flex items-center gap-1"><input type="radio" name="sad" value="yes"> হ্যাঁ</label>
-        <label class="flex items-center gap-1"><input type="radio" name="sad" value="no"> না</label>
-      </div>
-    </div>
-
-   
-    <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
-      <h2 class="text-xl font-bold text-indigo-700">আজকের পরামর্শ</h2>
-      <p class="text-indigo-600 text-sm">আপনার বর্তমান মানসিক অবস্থা অনুযায়ী পরামর্শ</p>
-      <button id="submitMood" class="mt-2 px-4 py-2 bg-indigo-700 text-white rounded-xl hover:bg-indigo-600 transition">Submit</button>
-
-
-      <div id="adviceSection" class="mt-4 flex flex-col gap-2">
+    <div id="mentalHealthCheck" class="mental-check flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein mt-6">
       
+      <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col items-center gap-3">
+        <h2 class="text-xl font-bold text-indigo-700">আজকের মানসিক অবস্থা</h2>
+        <div class="flex gap-4 text-3xl">
+          <span class="cursor-pointer emoji" data-value="1">😢</span>
+          <span class="cursor-pointer emoji" data-value="2">😔</span>
+          <span class="cursor-pointer emoji" data-value="3">😐</span>
+          <span class="cursor-pointer emoji" data-value="4">🙂</span>
+          <span class="cursor-pointer emoji" data-value="5">😃</span>
+        </div>
+        <input type="range" min="0" max="10" value="5" class="w-full mt-2" id="energyRange">
+        <div class="flex justify-between w-full text-sm text-indigo-600">
+          <span>Low</span>
+          <span>High</span>
+        </div>
+      </div>
+
+      <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-2">
+        <h2 class="text-xl font-bold text-indigo-700">আপনি কি বিষণ্ণ আজকে?</h2>
+        <div class="flex gap-4">
+          <label class="flex items-center gap-1"><input type="radio" name="sad" value="yes"> হ্যাঁ</label>
+          <label class="flex items-center gap-1"><input type="radio" name="sad" value="no"> না</label>
+        </div>
+      </div>
+
+      <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
+        <h2 class="text-xl font-bold text-indigo-700">আজকের পরামর্শ</h2>
+        <p class="text-indigo-600 text-sm">আপনার বর্তমান মানসিক অবস্থা অনুযায়ী পরামর্শ</p>
+        <button id="submitMood" class="mt-2 px-4 py-2 bg-indigo-700 text-white rounded-xl hover:bg-indigo-600 transition">Submit</button>
+
+        <div id="adviceSection" class="mt-4 flex flex-col gap-2"></div>
       </div>
     </div>
-  </div>
   `;
 
-  // Emoji selection logic
   const emojis = document.querySelectorAll('.emoji');
   emojis.forEach(emoji => {
     emoji.addEventListener('click', () => {
@@ -113,35 +109,29 @@ mentalCheckLink.addEventListener('click', (e) => {
     });
   });
 
-
   const submitBtn = document.getElementById('submitMood');
   submitBtn.addEventListener('click', () => {
     const adviceSection = document.getElementById('adviceSection');
-    adviceSection.innerHTML = ''; 
-
+    adviceSection.innerHTML = '';
     const selectedEmoji = document.querySelector('.emoji.scale-125');
     const sadRadio = document.querySelector('input[name="sad"]:checked');
-
-  
     const advices = [];
 
     if (selectedEmoji && parseInt(selectedEmoji.dataset.value) >= 4) {
       advices.push('আজ মনের ভালো লাগা ধরে রাখার চেষ্টা করুন।');
       advices.push('হালকা ব্যায়াম করুন।');
-      advices.push(' আপনার প্রিয় কাজ করুন।'); 
-      
+      advices.push('আপনার প্রিয় কাজ করুন।');
     } else {
-      advices.push('আজ মন খারাপ থাকলে কিছু ধর্মীয় বানী(কুরআন তিলাওয়াত এবং অন্যান্য ধর্মাবলম্বীরা তাদের নিজ ধর্মগ্রন্থ পাথ করুন) ।');
+      advices.push('আজ মন খারাপ থাকলে কিছু ধর্মীয় বানী পড়ুন।');
       advices.push('হালকা হাঁটাচলা করুন বা আপনার প্রিয় কাজ করুন।');
     }
 
     if (sadRadio && sadRadio.value === 'yes') {
       advices.push('আপনি বললেন আপনি বিষণ্ণ, অ্যাপের সাহায্যে মানসিক সহায়তা নিন।');
-      advices.push('পরিবারের সবথেকে কাছের মানুষের সাথে খোলামেলা আলোচনা করুন।');    
+      advices.push('পরিবারের কাছের মানুষের সাথে খোলামেলা আলোচনা করুন।');    
       advices.push('একা না থেকে নিজেকে দৈনন্দিন কাজে ব্যস্ত রাখুন।');
     }
 
-    // Insert advice boxes
     advices.forEach(text => {
       const div = document.createElement('div');
       div.className = "p-2 bg-indigo-100 rounded-xl shadow-sm text-indigo-700 text-sm";
@@ -149,44 +139,43 @@ mentalCheckLink.addEventListener('click', (e) => {
       adviceSection.appendChild(div);
     });
   });
-});
+}
 
-// 🔹 Call initial render on page load
-renderInitial();
+
 function renderPregnancy() {
   main.innerHTML = `
-  <div class="pregnancy-section flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
+    <div class="pregnancy-section flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
 
-    <!-- Box 1: Nutrition Tips -->
-    <div class="box p-4 rounded-2xl shadow-lg bg-rose-50 flex flex-col gap-3">
-      <h2 class="text-xl font-bold text-rose-700">পুষ্টি ও খাদ্য</h2>
-      <div class="flex flex-col gap-2">
-        <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিনে পর্যাপ্ত পানি পান করুন।</div>
-        <div class="p-2 bg-white rounded-xl shadow-inner">শাকসবজি ও ফলের পরিমাণ বাড়ান।</div>
-        <div class="p-2 bg-white rounded-xl shadow-inner">প্রোটিন ও ক্যালসিয়াম যুক্ত খাবার খান।</div>
+      <div class="box p-4 rounded-2xl shadow-lg bg-rose-50 flex flex-col gap-3">
+        <h2 class="text-xl font-bold text-rose-700">পুষ্টি ও খাদ্য</h2>
+        <div class="flex flex-col gap-2">
+          <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিনে পর্যাপ্ত পানি পান করুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">শাকসবজি ও ফলের পরিমাণ বাড়ান।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">প্রোটিন ও ক্যালসিয়াম যুক্ত খাবার খান।</div>
+        </div>
       </div>
-    </div>
 
-    <!-- Box 2: Exercise & Rest -->
-    <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-3">
-      <h2 class="text-xl font-bold text-green-700">ব্যায়াম ও বিশ্রাম</h2>
-      <div class="flex flex-col gap-2">
-        <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিন হালকা হাঁটাহাঁটি করুন।</div>
-        <div class="p-2 bg-white rounded-xl shadow-inner">বিশ্রামের জন্য পর্যাপ্ত সময় নিন।</div>
-        <div class="p-2 bg-white rounded-xl shadow-inner">ঘুম কমপক্ষে ৭-৮ ঘণ্টা নিশ্চিত করুন।</div>
+      <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-3">
+        <h2 class="text-xl font-bold text-green-700">ব্যায়াম ও বিশ্রাম</h2>
+        <div class="flex flex-col gap-2">
+          <div class="p-2 bg-white rounded-xl shadow-inner">প্রতি দিন হালকা হাঁটাহাঁটি করুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">পর্যাপ্ত বিশ্রাম নিন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">ঘুম কমপক্ষে ৭-৮ ঘণ্টা নিশ্চিত করুন।</div>
+        </div>
       </div>
-    </div>
 
-    <!-- Box 3: Mental Health & Tips -->
-    <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
-      <h2 class="text-xl font-bold text-indigo-700">মানসিক সুস্থতা ও পরামর্শ</h2>
-      <div class="flex flex-col gap-2">
-        <div class="p-2 bg-white rounded-xl shadow-inner">ধ্যান বা শ্বাস-প্রশ্বাস অনুশীলন করুন।</div>
-        <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে খোলাখুলিভাবে কথা বলুন।</div>
-        <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন।</div>
+      <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
+        <h2 class="text-xl font-bold text-indigo-700">মানসিক সুস্থতা ও পরামর্শ</h2>
+        <div class="flex flex-col gap-2">
+          <div class="p-2 bg-white rounded-xl shadow-inner">ধ্যান বা শ্বাস-প্রশ্বাস অনুশীলন করুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">পরিবার বা বন্ধুদের সাথে খোলাখুলিভাবে কথা বলুন।</div>
+          <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন।</div>
+        </div>
       </div>
-    </div>
 
-  </div>
+    </div>
   `;
 }
+
+
+renderInitial();
