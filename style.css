@@ -1,0 +1,127 @@
+/* Slide animation for dashboard */
+.slide {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.slide.open {
+  max-height: 400px;
+  opacity: 1;
+}
+
+/* Chevron rotate */
+.chev {
+  transition: transform 0.3s ease;
+}
+
+.chev.rot {
+  transform: rotate(180deg);
+}
+
+/* Moner Bondhu box animation: slow bounce */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
+
+/* Text glow effect */
+.glow-text {
+  text-shadow:
+    0 0 5px #6366f1,
+    0 0 10px #6366f1,
+    0 0 15px #6366f1,
+    0 0 20px #4f46e5,
+    0 0 25px #4f46e5;
+  transition: all 0.3s ease;
+}
+
+.glow-text:hover {
+  text-shadow:
+    0 0 10px #6366f1,
+    0 0 20px #6366f1,
+    0 0 30px #6366f1,
+    0 0 40px #4f46e5,
+    0 0 50px #4f46e5;
+  transform: scale(1.05);
+}
+
+/* Moner Bondhu box hover for extra shine */
+.moner-box:hover {
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe, #e0e7ff);
+  transition: background 0.5s ease;
+}
+
+/* Paragraph box styling */
+.paragraph-box {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(203, 213, 225, 0.5); /* Tailwind slate-200/50 */
+  border-radius: 1.5rem; /* rounded-2xl */
+  padding: 1.5rem; /* p-6 */
+  max-width: 768px; /* approx max-w-3xl */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+}
+
+.paragraph-box:hover {
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+/* Dashboard panel scrollable */
+.panel {
+  max-height: 24rem; /* Tailwind max-h-96 */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 2rem;
+}
+/* Fade-in animation */
+@keyframes fadein {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fadein {
+  animation: fadein 1s ease forwards;
+}
+
+/* Emoji highlight */
+.emoji:hover {
+  transform: scale(1.2);
+  transition: all 0.2s ease;
+}
+.scale-125 {
+  transform: scale(1.25);
+}
+/* Fade-in + slide-up animation for dynamic boxes */
+@keyframes fade-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadein {
+  animation: fade-slide-up 0.6s ease forwards;
+}
+
+/* Optional: increase spacing between main boxes */
+main > div {
+  gap: 1.5rem; /* 24px gap between title box and paragraph box */
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .moner-box h1 {
+    font-size: 3rem; /* smaller title on mobile */
+  }
+  .moner-box p {
+    font-size: 0.95rem; /* readable paragraph on mobile */
+  }
+}
