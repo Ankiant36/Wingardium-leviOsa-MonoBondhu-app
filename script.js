@@ -141,7 +141,7 @@ function renderMentalCheck() {
   });
 }
 
-// Pregnancy
+
 function renderPregnancy() {
   main.innerHTML = `
     <div class="pregnancy-section flex flex-wrap gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-6xl mx-auto animate-fadein justify-center">
@@ -173,7 +173,7 @@ function renderPregnancy() {
   `;
 }
 
-// Seasonal
+
 function renderSeasonal() {
   main.innerHTML = `
     <div class="seasonal-section flex flex-wrap gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-6xl mx-auto animate-fadein justify-center">
@@ -205,7 +205,12 @@ function renderSeasonal() {
   `;
 }
 
-// Common Illness
+// --- Common Illness ---
+const CommonIllness = Array.from(links).find(a => a.dataset.section === 'common-illness');
+illnessLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  renderCommonIllness();
+});
 function renderCommonIllness() {
   main.innerHTML = `
     <div class="common-illness-section flex flex-wrap justify-between gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
