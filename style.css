@@ -200,3 +200,12 @@ main > div {
   background-color: #fefefe; /* soft white */
   border-radius: 1.5rem;
 }
+table {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(99,102,241,0.15);
+  margin-top: 10px;
+}
+th, td {
+  font-size: 0.95rem;
+}
