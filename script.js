@@ -181,13 +181,12 @@ seasonalLink.addEventListener('click', (e) => {
   renderSeasonal();
 });
 
-// Initial render
-renderInitial();
+
 function renderCommonIllness() {
   main.innerHTML = `
     <div class="common-illness-section flex flex-wrap justify-between gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
 
-      <!-- শিশু -->
+    
       <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
         <h2 class="text-xl font-bold text-yellow-700">শিশু রোগ</h2>
         <ul class="mt-2 list-disc list-inside text-yellow-800 text-sm">
@@ -237,3 +236,5 @@ illnessLink.addEventListener('click', (e) => {
   e.preventDefault();
   renderCommonIllness();
 });
+// Initial render
+renderInitial();
