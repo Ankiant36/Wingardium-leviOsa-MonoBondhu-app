@@ -256,6 +256,67 @@ function renderCommonIllness() {
     });
   });
 }
+// Social Health Section
+const socialLink = Array.from(links).find(a => a.dataset.section === 'social');
+
+if (socialLink) {
+  socialLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    renderSocialHealth();
+  });
+}
+
+function renderSocialHealth() {
+  main.innerHTML = `
+    <div class="social-health-section flex justify-center w-full mt-6 animate-fadein">
+      <div class="p-6 rounded-2xl shadow-xl bg-white/80 border border-white/30 w-full max-w-4xl">
+        <h2 class="text-2xl font-bold text-indigo-700 text-center mb-4">সামাজিক স্বাস্থ্য পরিষেবা ইভেন্ট তালিকা</h2>
+        <table class="w-full border border-indigo-200 rounded-lg text-center">
+          <thead class="bg-indigo-100">
+            <tr>
+              <th class="border p-2">ইভেন্টের নাম</th>
+              <th class="border p-2">তারিখ</th>
+              <th class="border p-2">সময়</th>
+              <th class="border p-2">স্থান</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border p-2">স্বাস্থ্য সচেতনতা ক্যাম্প</td>
+              <td class="border p-2">১৫ নভেম্বর ২০২৫</td>
+              <td class="border p-2">সকাল ১০টা</td>
+              <td class="border p-2">কুমিল্লা শহর</td>
+            </tr>
+            <tr>
+              <td class="border p-2">টিকা প্রদান অনুষ্ঠান</td>
+              <td class="border p-2">২০ নভেম্বর ২০২৫</td>
+              <td class="border p-2">দুপুর ১২টা</td>
+              <td class="border p-2">মুরাদনগর উপজেলা</td>
+            </tr>
+            <tr>
+              <td class="border p-2">নারী স্বাস্থ্য কর্মশালা</td>
+              <td class="border p-2">২৫ নভেম্বর ২০২৫</td>
+              <td class="border p-2">বিকাল ৪টা</td>
+              <td class="border p-2">দাউদকান্দি</td>
+            </tr>
+            <tr>
+              <td class="border p-2">রক্তদান কর্মসূচি</td>
+              <td class="border p-2">৩০ নভেম্বর ২০২৫</td>
+              <td class="border p-2">সকাল ৯টা</td>
+              <td class="border p-2">ব্রাহ্মণপাড়া</td>
+            </tr>
+            <tr>
+              <td class="border p-2">মানসিক স্বাস্থ্য সেমিনার</td>
+              <td class="border p-2">৫ ডিসেম্বর ২০২৫</td>
+              <td class="border p-2">সন্ধ্যা ৬টা</td>
+              <td class="border p-2">কুমিল্লা বিশ্ববিদ্যালয়</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
 
 // Emergency / জরুরি সেবা
 const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
