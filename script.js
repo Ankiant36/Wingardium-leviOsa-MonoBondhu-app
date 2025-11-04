@@ -3,7 +3,7 @@ const panel = document.getElementById('panel');
 const chev = document.getElementById('chev');
 const main = document.querySelector('main');
 
-// Initial render
+// Initial render function
 function renderInitial() {
   main.innerHTML = `
     <div class="flex flex-col items-center justify-center px-6 mt-6 gap-6">
@@ -16,7 +16,7 @@ function renderInitial() {
   `;
 }
 
-
+// Dashboard toggle
 dashBtn.addEventListener('click', () => {
   panel.classList.toggle('open');
   chev.classList.toggle('rot');
@@ -29,10 +29,14 @@ document.addEventListener('click', (e) => {
   }
 });
 
-const links = panel.querySelectorAll('a');
+// Section links
+const homeLink = document.querySelector('a[data-section="home"]');
+const mentalCheckLink = document.querySelector('a[data-section="checkup"]');
+const pregnancyLink = document.querySelector('a[data-section="pregnancy"]');
+const seasonalLink = document.querySelector('a[data-section="seasonal"]');
+const illnessLink = document.querySelector('a[data-section="common-illness"]');
 
 // Home
-const homeLink = Array.from(links).find(a => a.dataset.section === 'home');
 homeLink.addEventListener('click', (e) => {
   e.preventDefault();
   renderInitial();
@@ -47,12 +51,32 @@ homeLink.addEventListener('click', (e) => {
 });
 
 // Mental Health Check
-const mentalCheckLink = Array.from(links).find(a => a.dataset.section === 'checkup');
 mentalCheckLink.addEventListener('click', (e) => {
   e.preventDefault();
   renderMentalCheck();
 });
 
+// Pregnancy
+pregnancyLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  renderPregnancy();
+});
+
+// Seasonal
+seasonalLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  renderSeasonal();
+});
+
+// Common Illness
+illnessLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  renderCommonIllness();
+});
+
+// === Functions ===
+
+// Mental Health Check
 function renderMentalCheck() {
   main.innerHTML = `
     <div id="mentalHealthCheck" class="mental-check flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein mt-6">
@@ -71,7 +95,6 @@ function renderMentalCheck() {
           <span>High</span>
         </div>
       </div>
-
       <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-2">
         <h2 class="text-xl font-bold text-indigo-700">আপনি কি বিষণ্ণ আজকে?</h2>
         <div class="flex gap-4">
@@ -79,7 +102,6 @@ function renderMentalCheck() {
           <label class="flex items-center gap-1"><input type="radio" name="sad" value="no"> না</label>
         </div>
       </div>
-
       <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3">
         <h2 class="text-xl font-bold text-indigo-700">আজকের পরামর্শ</h2>
         <p class="text-indigo-600 text-sm">আপনার বর্তমান মানসিক অবস্থা অনুযায়ী পরামর্শ</p>
@@ -88,7 +110,6 @@ function renderMentalCheck() {
       </div>
     </div>
   `;
-
   const emojis = document.querySelectorAll('.emoji');
   emojis.forEach(emoji => {
     emoji.addEventListener('click', () => {
@@ -96,30 +117,25 @@ function renderMentalCheck() {
       emoji.classList.add('scale-125');
     });
   });
-
-  const submitBtn = document.getElementById('submitMood');
-  submitBtn.addEventListener('click', () => {
+  document.getElementById('submitMood').addEventListener('click', () => {
     const adviceSection = document.getElementById('adviceSection');
     adviceSection.innerHTML = '';
     const selectedEmoji = document.querySelector('.emoji.scale-125');
     const sadRadio = document.querySelector('input[name="sad"]:checked');
     const advices = [];
-
     if (selectedEmoji && parseInt(selectedEmoji.dataset.value) >= 4) {
       advices.push('আজ মনের ভালো লাগা ধরে রাখার চেষ্টা করুন।');
       advices.push('হালকা ব্যায়াম করুন।');
       advices.push('আপনার প্রিয় কাজ করুন।');
     } else {
       advices.push('কিছু ধর্মীয় বানী পড়ুন।');
-      advices.push('প্রিয় কোনো জায়গায় ঘুরতে যান।');
+      advices.push('প্রিয় কোনো জায়গায় ঘুরতে যান।');
     }
-
     if (sadRadio && sadRadio.value === 'yes') {
       advices.push('আপনি বললেন আপনি বিষণ্ণ, অ্যাপের সাহায্যে মানসিক সহায়তা নিন।');
       advices.push('পরিবারের কাছের মানুষের সাথে খোলামেলা আলোচনা করুন।');    
       advices.push('একা না থেকে নিজেকে দৈনন্দিন কাজে ব্যস্ত রাখুন।');
     }
-
     advices.forEach(text => {
       const div = document.createElement('div');
       div.className = "p-2 bg-indigo-100 rounded-xl shadow-sm text-indigo-700 text-sm";
@@ -130,17 +146,9 @@ function renderMentalCheck() {
 }
 
 // Pregnancy
-const pregnancyLink = Array.from(links).find(a => a.dataset.section === 'pregnancy');
-pregnancyLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderPregnancy();
-});
-
 function renderPregnancy() {
   main.innerHTML = `
     <div class="pregnancy-section flex flex-wrap gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-6xl mx-auto animate-fadein justify-center">
-
-      <!-- পুষ্টি ও খাদ্য -->
       <div class="box p-4 rounded-2xl shadow-lg bg-rose-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-rose-700">🍅 পুষ্টি ও খাদ্য</h2>
         <div class="flex flex-col gap-2">
@@ -149,8 +157,6 @@ function renderPregnancy() {
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রোটিন ও ক্যালসিয়াম যুক্ত খাবার খান।</div>
         </div>
       </div>
-
-      <!-- ব্যায়াম ও বিশ্রাম -->
       <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-green-700">🙆🏻‍♀️ ব্যায়াম ও বিশ্রাম</h2>
         <div class="flex flex-col gap-2">
@@ -159,8 +165,6 @@ function renderPregnancy() {
           <div class="p-2 bg-white rounded-xl shadow-inner">ঘুম কমপক্ষে ৭-৮ ঘণ্টা নিশ্চিত করুন।</div>
         </div>
       </div>
-
-      <!-- মানসিক সুস্থতা ও পরামর্শ -->
       <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-indigo-700">👩🏻‍⚕️ মানসিক সুস্থতা ও পরামর্শ</h2>
         <div class="flex flex-col gap-2">
@@ -169,24 +173,47 @@ function renderPregnancy() {
           <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন।</div>
         </div>
       </div>
-
     </div>
   `;
 }
 
 // Seasonal
-const seasonalLink = Array.from(links).find(a => a.dataset.section === 'seasonal');
-seasonalLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderSeasonal();
-});
+function renderSeasonal() {
+  main.innerHTML = `
+    <div class="seasonal-section flex flex-wrap gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-6xl mx-auto animate-fadein justify-center">
+      <div class="box p-4 rounded-2xl shadow-lg bg-blue-50 flex flex-col gap-2 w-[45%]">
+        <h2 class="text-xl font-bold text-blue-700">🌧️ বর্ষা (জুন-সেপ্টেম্বর)</h2>
+        <div class="small-box">ডেঙ্গু প্রতিরোধে মশক নিধন স্প্রে ছেটানো</div>
+        <div class="small-box">জমে থাকা পানি ফেলে দেওয়া</div>
+        <div class="small-box">মশারি ব্যবহার করা</div>
+      </div>
+      <div class="box p-4 rounded-2xl shadow-lg bg-gray-100 flex flex-col gap-2 w-[45%]">
+        <h2 class="text-xl font-bold text-gray-800">❄️ শীতকাল (ডিসেম্বর-ফেব্রুয়ারি)</h2>
+        <div class="small-box">ঠান্ডা ও ফ্লু রোধে গরম কাপড় পরিধান</div>
+        <div class="small-box">নিউমোনিয়া রোধে সতর্ক থাকা</div>
+        <div class="small-box">পুষ্টি বৃদ্ধিতে শীতকালীন শাক-সবজি খাওয়া</div>
+      </div>
+      <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex flex-col gap-2 w-[45%]">
+        <h2 class="text-xl font-bold text-yellow-800">☀️ গ্রীষ্মকাল (মার্চ-মে)</h2>
+        <div class="small-box">মুখ মন্ডলে পানি দেওয়া</div>
+        <div class="small-box">পরিষ্কার পানি পান করা</div>
+        <div class="small-box">হিটস্ট্রোক প্রতিরোধে রোদে বা গরমে ছাতা ব্যাবহার করা</div>
+        <div class="small-box">সম্ভব হলে রোদ এড়িয়ে চলা</div>
+      </div>
+      <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-2 w-[45%]">
+        <h2 class="text-xl font-bold text-green-700">📅 সারাবছর</h2>
+        <div class="small-box">হাত ধোয়া নিশ্চিত করা</div>
+        <div class="small-box">খাদ্য নিরাপত্তা নিশ্চিত করা</div>
+      </div>
+    </div>
+  `;
+}
 
-
+// Common Illness
 function renderCommonIllness() {
   main.innerHTML = `
     <div class="common-illness-section flex flex-wrap justify-between gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
-
-    
+      <!-- শিশু -->
       <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
         <h2 class="text-xl font-bold text-yellow-700">শিশু রোগ</h2>
         <ul class="mt-2 list-disc list-inside text-yellow-800 text-sm">
@@ -216,11 +243,10 @@ function renderCommonIllness() {
           <li>শ্বাসকষ্ট বা শারীরিক সমস্যা বাড়তে থাকা</li>
         </ul>
       </div>
-
     </div>
   `;
 
-  // Click effect for highlight
+  // Click effect for highlighting box
   const boxes = document.querySelectorAll('.illness-box');
   boxes.forEach(box => {
     box.addEventListener('click', () => {
@@ -230,11 +256,5 @@ function renderCommonIllness() {
   });
 }
 
-// Link listener
-const illnessLink = Array.from(links).find(a => a.dataset.section === 'common-illness');
-illnessLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderCommonIllness();
-});
 // Initial render
 renderInitial();
