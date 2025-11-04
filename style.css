@@ -161,3 +161,42 @@ main > div {
   list-style-type: disc;
   padding-left: 20px;
 }
+/* Common Illness Boxes */
+.illness-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.illness-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.illness-box ul {
+  padding-left: 1rem; /* list spacing */
+  margin-top: 0.5rem;
+}
+.illness-box li {
+  margin-bottom: 0.25rem;
+}
+
+/* Ring effect on click */
+.illness-box.ring-4 {
+  box-shadow: 0 0 0 4px #6366f1; /* Indigo ring for click highlight */
+}
+
+/* Responsive: 3 boxes side by side, smaller screen stack */
+@media (max-width: 1024px) {
+  .common-illness-section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .illness-box {
+    width: 100% !important;
+  }
+}
+
+/* Optional: Background gradient or padding for section */
+.common-illness-section {
+  padding: 1.5rem;
+  background-color: #fefefe; /* soft white */
+  border-radius: 1.5rem;
+}
