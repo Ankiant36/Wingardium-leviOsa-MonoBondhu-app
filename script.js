@@ -256,60 +256,6 @@ function renderCommonIllness() {
     });
   });
 }
-const sectionData = {
-
-  social: `
-    <div class="paragraph-box animate-fadein">
-      <h2 class="text-2xl font-bold text-indigo-700 mb-3">সামাজিক স্বাস্থ্য পরিষেবা</h2>
-      <table class="w-full border-collapse border border-indigo-200 text-center">
-        <thead class="bg-indigo-100 text-indigo-700">
-          <tr>
-            <th class="border border-indigo-200 p-2">ক্রম</th>
-            <th class="border border-indigo-200 p-2">ইভেন্টের নাম</th>
-            <th class="border border-indigo-200 p-2">বিবরণ</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="hover:bg-indigo-50">
-            <td class="border border-indigo-200 p-2">১</td>
-            <td class="border border-indigo-200 p-2">বিনামূল্যে স্বাস্থ্য পরীক্ষা ক্যাম্প</td>
-            <td class="border border-indigo-200 p-2">গ্রামীণ ও উপশহর এলাকায় ফ্রি চেকআপ ও পরামর্শ সেবা।</td>
-          </tr>
-          <tr class="hover:bg-indigo-50">
-            <td class="border border-indigo-200 p-2">২</td>
-            <td class="border border-indigo-200 p-2">রক্তদান কর্মসূচি</td>
-            <td class="border border-indigo-200 p-2">স্বেচ্ছায় রক্তদান উৎসাহিত করার উদ্যোগ।</td>
-          </tr>
-          <tr class="hover:bg-indigo-50">
-            <td class="border border-indigo-200 p-2">৩</td>
-            <td class="border border-indigo-200 p-2">মানসিক স্বাস্থ্য সচেতনতা সেশন</td>
-            <td class="border border-indigo-200 p-2">বিদ্যালয় ও কলেজে মানসিক সুস্থতা বিষয়ক আলোচনা।</td>
-          </tr>
-          <tr class="hover:bg-indigo-50">
-            <td class="border border-indigo-200 p-2">৪</td>
-            <td class="border border-indigo-200 p-2">টিকাদান কার্যক্রম</td>
-            <td class="border border-indigo-200 p-2">বিনামূল্যে টিকা ও স্বাস্থ্য পরীক্ষা ক্যাম্প।</td>
-          </tr>
-          <tr class="hover:bg-indigo-50">
-            <td class="border border-indigo-200 p-2">৫</td>
-            <td class="border border-indigo-200 p-2">মাতৃত্বকালীন স্বাস্থ্য কর্মশালা</td>
-            <td class="border border-indigo-200 p-2">গর্ভবতী নারীদের জন্য পুষ্টি ও সেবা বিষয়ক দিকনির্দেশনা।</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  `
-};
-
-document.querySelectorAll('[data-section]').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const section = link.dataset.section;
-    const main = document.querySelector('main');
-    main.innerHTML = sectionData[section] || "";
-  });
-});
-
 
 // Emergency / জরুরি সেবা
 const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
