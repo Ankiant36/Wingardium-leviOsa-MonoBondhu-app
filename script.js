@@ -371,6 +371,59 @@ volunteerLink.addEventListener('click', (e) => {
     volunteerForm.reset();
   });
 });
+// Digital Health Assistant
+const digitalLink = document.querySelector('a[data-section="digital"]');
+
+digitalLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  renderDigitalAssistant();
+});
+
+function renderDigitalAssistant() {
+  main.innerHTML = `
+    <div class="digital-section flex flex-col gap-4 p-6 bg-white rounded-3xl shadow-2xl max-w-3xl mx-auto animate-fadein">
+      <h2 class="text-2xl font-bold text-indigo-700 text-center">আপনার মনের কথা লিখুন বা বলুন</h2>
+      <div class="flex items-center gap-2">
+        <input id="digitalInput" type="text" placeholder="এখানে লিখুন..." class="flex-1 p-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-300">
+        <button id="voiceBtn" class="p-2 bg-indigo-100 rounded-xl hover:bg-indigo-200 transition">
+          🎤
+        </button>
+      </div>
+      <button id="submitDigital" class="mt-2 px-4 py-2 bg-indigo-700 text-white rounded-xl hover:bg-indigo-600 transition">Submit</button>
+      <div id="digitalMessage" class="mt-2 text-sm text-indigo-800"></div>
+    </div>
+  `;
+
+  const inputField = document.getElementById('digitalInput');
+  const voiceBtn = document.getElementById('voiceBtn');
+  const submitBtn = document.getElementById('submitDigital');
+  const messageBox = document.getElementById('digitalMessage');
+
+  // Voice button click (demo)
+  voiceBtn.addEventListener('click', () => {
+    alert("এখানে পরে voice capture যোগ করা যাবে। 🎤");
+  });
+
+  // Submit button
+  submitBtn.addEventListener('click', () => {
+    const text = inputField.value.trim();
+    if(text === "") {
+      messageBox.textContent = "দয়া করে কিছু লিখুন বা বলুন।";
+      return;
+    }
+    
+    // Offline store
+    let savedMessages = JSON.parse(localStorage.getItem('digitalMessages') || '[]');
+    savedMessages.push(text);
+    localStorage.setItem('digitalMessages', JSON.stringify(savedMessages));
+
+    // Online simulation (demo)
+    messageBox.textContent = "আপনার বার্তা পাঠানো হয়েছে। মনোবিজ্ঞানী (online) এটি দেখবেন।";
+    
+    // Clear input
+    inputField.value = "";
+  });
+}
 
 // Emergency / জরুরি সেবা
 const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
