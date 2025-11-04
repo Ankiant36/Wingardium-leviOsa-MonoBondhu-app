@@ -247,7 +247,6 @@ function renderCommonIllness() {
     </div>
   `;
 
-
   // Click effect for highlighting box
   const boxes = document.querySelectorAll('.illness-box');
   boxes.forEach(box => {
@@ -321,6 +320,8 @@ document.querySelectorAll('[data-section]').forEach(link => {
     main.innerHTML = sectionData[section] || "";
   });
 });
+
+
 // Emergency / জরুরি সেবা
 const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
 if(emergencyLink){
