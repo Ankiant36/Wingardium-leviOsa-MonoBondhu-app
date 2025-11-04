@@ -257,21 +257,10 @@ function renderCommonIllness() {
   });
 }
 const sectionData = {
-  home: `
-    <div class="paragraph-box animate-fadein">
-      <h2 class="text-2xl font-bold text-indigo-700 mb-4">মন এর বন্ধু</h2>
-      <p>মানসিক স্বাস্থ্য উন্নয়নের জন্য প্রতিদিন ছোট ছোট পদক্ষেপ নিন।</p>
-    </div>
-  `,
+
   social: `
     <div class="paragraph-box animate-fadein">
       <h2 class="text-2xl font-bold text-indigo-700 mb-3">সামাজিক স্বাস্থ্য পরিষেবা</h2>
-      <p class="text-gray-700 mb-4">
-        গ্রামীণ এলাকায় অনেক সময় স্বাস্থ্য ক্যাম্প হয়, কিন্তু অনেকে সময়মতো জানতে পারে না। 
-        এই সেকশনটি সেই সমস্যার সমাধান — যাতে ব্যবহারকারীরা তাদের আশেপাশের এলাকায় অনুষ্ঠিত 
-        স্বাস্থ্য সম্পর্কিত ইভেন্ট ও পরিষেবার খবর সহজেই জানতে পারেন।
-      </p>
-
       <table class="w-full border-collapse border border-indigo-200 text-center">
         <thead class="bg-indigo-100 text-indigo-700">
           <tr>
