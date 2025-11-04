@@ -258,3 +258,21 @@ function renderCommonIllness() {
 
 // Initial render
 renderInitial();
+// Emergency / জরুরি সেবা
+const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
+emergencyLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  
+  // Footer e number show koro
+  const emergencyFooter = document.getElementById('emergencyFooter');
+  emergencyFooter.classList.remove('hidden');
+
+  // Optionally: Main section e kichu message show koro
+  main.innerHTML = `
+    <div class="flex flex-col items-center justify-center gap-4 p-6 bg-white rounded-3xl shadow-2xl max-w-3xl mx-auto animate-fadein mt-6">
+      <h2 class="text-xl font-bold text-red-600">জরুরি সেবা চালু</h2>
+      <p class="text-indigo-700 text-center">নিচের নম্বরে কল করুন এবং সরাসরি মনোবিজ্ঞানী বা ডাক্তার এর সাথে সংযোগ করুন।</p>
+      <a href="tel:+880123456789" class="mt-2 px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition">কল করুন</a>
+    </div>
+  `;
+});
