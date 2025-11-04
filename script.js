@@ -245,6 +245,7 @@ function renderCommonIllness() {
       </div>
     </div>
   `;
+}
 
   // Click effect for highlighting box
   const boxes = document.querySelectorAll('.illness-box');
@@ -254,7 +255,7 @@ function renderCommonIllness() {
       box.classList.add('ring-4', 'ring-indigo-400');
     });
   });
-}
+
 // Emergency / জরুরি সেবা
 const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
 emergencyLink.addEventListener('click', (e) => {
