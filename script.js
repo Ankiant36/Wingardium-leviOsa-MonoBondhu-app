@@ -73,6 +73,18 @@ illnessLink.addEventListener('click', (e) => {
   e.preventDefault();
   renderCommonIllness();
 });
+// Click effect for highlighting box
+  const boxes = document.querySelectorAll('.illness-box');
+  boxes.forEach(box => {
+    box.addEventListener('click', () => {
+      boxes.forEach(b => b.classList.remove('ring-4', 'ring-indigo-400'));
+      box.classList.add('ring-4', 'ring-indigo-400');
+    });
+  });
+// Emergency / জরুরি সেবা
+const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
+emergencyLink.addEventListener('click', (e) => {
+  e.preventDefault();
 
 // === Functions ===
 
@@ -110,6 +122,7 @@ function renderMentalCheck() {
       </div>
     </div>
   `;
+
   const emojis = document.querySelectorAll('.emoji');
   emojis.forEach(emoji => {
     emoji.addEventListener('click', () => {
@@ -245,23 +258,11 @@ function renderCommonIllness() {
       </div>
     </div>
   `;
-
-  // Click effect for highlighting box
-  const boxes = document.querySelectorAll('.illness-box');
-  boxes.forEach(box => {
-    box.addEventListener('click', () => {
-      boxes.forEach(b => b.classList.remove('ring-4', 'ring-indigo-400'));
-      box.classList.add('ring-4', 'ring-indigo-400');
-    });
-  });
 }
+ 
 
-// Initial render
-renderInitial();
-// Emergency / জরুরি সেবা
-const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
-emergencyLink.addEventListener('click', (e) => {
-  e.preventDefault();
+
+
   
   // Footer e number show koro
   const emergencyFooter = document.getElementById('emergencyFooter');
@@ -276,3 +277,5 @@ emergencyLink.addEventListener('click', (e) => {
     </div>
   `;
 });
+// Initial render
+renderInitial();
