@@ -1,22 +1,16 @@
 const dashBtn = document.getElementById('dashBtn');
 const panel = document.getElementById('panel');
 const chev = document.getElementById('chev');
-const main = document.querySelector('main');
+const main = document.getElementById('mainContent');
 
-// Initial render
-function renderInitial() {
-  main.innerHTML = `
-    <div class="flex flex-col items-center justify-center px-6 mt-6 gap-6">
-      <div class="moner-box relative flex items-center justify-center p-8 rounded-3xl shadow-2xl bg-gradient-to-r from-indigo-200 via-indigo-100 to-indigo-200 animate-bounce-slow w-full max-w-3xl">
-        <h1 class="text-5xl font-extrabold text-indigo-800 tracking-wider glow-text text-center">
-          মনোবন্ধু
-        </h1>
-      </div>
-    </div>
-  `;
+let timers = []; // sequential display tracking
+
+function clearTimers() {
+  timers.forEach(t => clearTimeout(t));
+  timers = [];
 }
 
-
+// Dashboard toggle
 dashBtn.addEventListener('click', () => {
   panel.classList.toggle('open');
   chev.classList.toggle('rot');
@@ -31,29 +25,41 @@ document.addEventListener('click', (e) => {
 
 const links = panel.querySelectorAll('a');
 
-// Home
-const homeLink = Array.from(links).find(a => a.dataset.section === 'home');
-homeLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderInitial();
-  const paraBox = document.createElement('div');
-  paraBox.className = "moner-box para-box relative flex flex-col items-center justify-center p-6 rounded-3xl shadow-2xl bg-indigo-50 animate-fadein w-full max-w-3xl mt-4";
-  paraBox.innerHTML = `
-    <p class="mt-2 text-indigo-700 text-center text-base md:text-lg">
-      মনোবন্ধু এমন একটি অ্যাপ যা আপনার শারীরিক ও মানসিক সুস্থতার নির্ভরযোগ্য সঙ্গী হিসেবে কাজ করে। মনোবন্ধু ঠিক সময়ে আপনার পাশে এগিয়ে আসে যখন আপনার প্রয়োজন। এই অ্যাপের মাধ্যমে আপনি পাবেন মানসিক স্বাস্থ্যবিষয়ক পরামর্শ, জরুরি পরিস্থিতিতে তাৎক্ষণিক হেল্পলাইন নম্বর, স্বাস্থ্য-পরীক্ষা বা মেডিকেল সহায়তা সংক্রান্ত তথ্য, এমনকি নিজের মুড ট্র্যাক করার সুবিধাও। এটি শুধু একটি অ্যাপ নয়, বরং এক বন্ধুর মতো—যে আপনার প্রয়োজনে পাশে থাকে, শোনে, বোঝে, এবং সাহায্য করে। মনোবন্ধু মানে—মন ও জীবনের যত্ন, এক স্পর্শে।
-    </p>
+// --- Render functions ---
+function renderInitial() {
+  main.innerHTML = '';
+  clearTimers();
+
+  // Logo
+  const logoDiv = document.createElement('div');
+  logoDiv.className = "flex flex-col items-center justify-center px-6 mt-6 gap-6";
+  logoDiv.innerHTML = `
+    <div class="moner-box relative flex items-center justify-center p-8 rounded-3xl shadow-2xl bg-gradient-to-r from-indigo-200 via-indigo-100 to-indigo-200 animate-bounce-slow w-full max-w-3xl">
+      <h1 class="text-5xl font-extrabold text-indigo-800 tracking-wider glow-text text-center">
+        মনোবন্ধু
+      </h1>
+    </div>
   `;
-  main.appendChild(paraBox);
-});
+  main.appendChild(logoDiv);
 
-// Mental Health Check
-const mentalCheckLink = Array.from(links).find(a => a.dataset.section === 'checkup');
-mentalCheckLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderMentalCheck();
-});
+  // Paragraph after 1 sec
+  timers.push(setTimeout(() => {
+    const paraBox = document.createElement('div');
+    paraBox.className = "moner-box para-box relative flex flex-col items-center justify-center p-6 rounded-3xl shadow-2xl bg-indigo-50 animate-fadein w-full max-w-3xl mt-4";
+    paraBox.innerHTML = `
+      <p class="mt-2 text-indigo-700 text-center text-base md:text-lg">
+        মনোবন্ধু এমন একটি অ্যাপ যা আপনার শারীরিক ও মানসিক সুস্থতার নির্ভরযোগ্য সঙ্গী হিসেবে কাজ করে। মনোবন্ধু ঠিক সময়ে আপনার পাশে এগিয়ে আসে যখন আপনার প্রয়োজন। এই অ্যাপের মাধ্যমে আপনি পাবেন মানসিক স্বাস্থ্যবিষয়ক পরামর্শ, জরুরি পরিস্থিতিতে তাৎক্ষণিক হেল্পলাইন নম্বর, স্বাস্থ্য-পরীক্ষা বা মেডিকেল সহায়তা সংক্রান্ত তথ্য, এমনকি নিজের মুড ট্র্যাক করার সুবিধাও। এটি শুধু একটি অ্যাপ নয়, বরং এক বন্ধুর মতো—যে আপনার প্রয়োজনে পাশে থাকে, শোনে, বোঝে, এবং সাহায্য করে। মনোবন্ধু মানে—মন ও জীবনের যত্ন, এক স্পর্শে।
+      </p>
+    `;
+    main.appendChild(paraBox);
+  }, 1000));
+}
 
+// --- Mental Health Check ---
 function renderMentalCheck() {
+  main.innerHTML = '';
+  clearTimers();
+
   main.innerHTML = `
     <div id="mentalHealthCheck" class="mental-check flex flex-col gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein mt-6">
       <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col items-center gap-3">
@@ -129,18 +135,13 @@ function renderMentalCheck() {
   });
 }
 
-// Pregnancy
-const pregnancyLink = Array.from(links).find(a => a.dataset.section === 'pregnancy');
-pregnancyLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderPregnancy();
-});
-
+// --- Pregnancy ---
 function renderPregnancy() {
+  main.innerHTML = '';
+  clearTimers();
+
   main.innerHTML = `
     <div class="pregnancy-section flex flex-wrap gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-6xl mx-auto animate-fadein justify-center">
-
-      <!-- পুষ্টি ও খাদ্য -->
       <div class="box p-4 rounded-2xl shadow-lg bg-rose-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-rose-700">🍅 পুষ্টি ও খাদ্য</h2>
         <div class="flex flex-col gap-2">
@@ -149,8 +150,6 @@ function renderPregnancy() {
           <div class="p-2 bg-white rounded-xl shadow-inner">প্রোটিন ও ক্যালসিয়াম যুক্ত খাবার খান।</div>
         </div>
       </div>
-
-      <!-- ব্যায়াম ও বিশ্রাম -->
       <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-green-700">🙆🏻‍♀️ ব্যায়াম ও বিশ্রাম</h2>
         <div class="flex flex-col gap-2">
@@ -159,8 +158,6 @@ function renderPregnancy() {
           <div class="p-2 bg-white rounded-xl shadow-inner">ঘুম কমপক্ষে ৭-৮ ঘণ্টা নিশ্চিত করুন।</div>
         </div>
       </div>
-
-      <!-- মানসিক সুস্থতা ও পরামর্শ -->
       <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex flex-col gap-3 w-[30%]">
         <h2 class="text-xl font-bold text-indigo-700">👩🏻‍⚕️ মানসিক সুস্থতা ও পরামর্শ</h2>
         <div class="flex flex-col gap-2">
@@ -169,64 +166,49 @@ function renderPregnancy() {
           <div class="p-2 bg-white rounded-xl shadow-inner">অতিরিক্ত চাপ এড়ান এবং শান্ত পরিবেশে থাকুন।</div>
         </div>
       </div>
-
     </div>
   `;
 }
 
-// Seasonal
-const seasonalLink = Array.from(links).find(a => a.dataset.section === 'seasonal');
-seasonalLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderSeasonal();
-});
-
+// --- Seasonal ---
 function renderSeasonal() {
+  main.innerHTML = '';
+  clearTimers();
   main.innerHTML = `
     <div class="seasonal-section flex flex-wrap gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-6xl mx-auto animate-fadein justify-center">
-
       <div class="box p-4 rounded-2xl shadow-lg bg-blue-50 flex flex-col gap-2 w-[45%]">
         <h2 class="text-xl font-bold text-blue-700">🌧️ বর্ষা (জুন-সেপ্টেম্বর)</h2>
         <div class="small-box">ডেঙ্গু প্রতিরোধ</div>
         <div class="small-box">জমে থাকা পানি পরীক্ষা করুন</div>
         <div class="small-box">মশারি ব্যবহার করুন</div>
       </div>
-
       <div class="box p-4 rounded-2xl shadow-lg bg-gray-100 flex flex-col gap-2 w-[45%]">
         <h2 class="text-xl font-bold text-gray-800">❄️ শীতকাল (ডিসেম্বর-ফেব্রুয়ারি)</h2>
         <div class="small-box">ঠান্ডা ও ফ্লু যত্ন</div>
         <div class="small-box">নিউমোনিয়ার বিপদ সংকেত</div>
       </div>
-
       <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex flex-col gap-2 w-[45%]">
         <h2 class="text-xl font-bold text-yellow-800">☀️ গ্রীষ্মকাল (মার্চ-মে)</h2>
         <div class="small-box">মুখে পানীয় দ্রবণ</div>
         <div class="small-box">পরিষ্কার পানি পান করুন</div>
         <div class="small-box">হিটস্ট্রোক প্রতিরোধ</div>
       </div>
-
       <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-2 w-[45%]">
         <h2 class="text-xl font-bold text-green-700">📅 সারাবছর</h2>
         <div class="small-box">হাত ধোয়া</div>
         <div class="small-box">খাদ্য নিরাপত্তা</div>
       </div>
-
     </div>
   `;
 }
 
-// Common Illness
-const illnessLink = Array.from(links).find(a => a.dataset.section === 'common-illness');
-illnessLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderCommonIllness();
-});
-
+// --- Common Illness ---
 function renderCommonIllness() {
+  main.innerHTML = '';
+  clearTimers();
+
   main.innerHTML = `
     <div class="common-illness-section flex flex-wrap justify-between gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
-
-      <!-- শিশু -->
       <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
         <h2 class="text-xl font-bold text-yellow-700">শিশু রোগ</h2>
         <ul class="mt-2 list-disc list-inside text-yellow-800 text-sm">
@@ -236,8 +218,6 @@ function renderCommonIllness() {
           <li>হাম – কানে ব্যথা বা কান ফুলে যেতে পারে</li>
         </ul>
       </div>
-
-      <!-- মধ্যবয়স্ক -->
       <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
         <h2 class="text-xl font-bold text-green-700">মধ্যবয়স্ক</h2>
         <ul class="mt-2 list-disc list-inside text-green-800 text-sm">
@@ -246,29 +226,49 @@ function renderCommonIllness() {
           <li>হালকা সর্দি,কাশি</li>
         </ul>
       </div>
-
-      <!-- বৃদ্ধ -->
       <div class="box p-4 rounded-2xl shadow-lg bg-indigo-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
-        <h2 class="text-xl font-bold text-indigo-700">বৃদ্ধ</h2>
+        <h2 class="text-xl font-bold text-indigo-700">বয়স্ক</h2>
         <ul class="mt-2 list-disc list-inside text-indigo-800 text-sm">
-          <li>সাধারণ জ্বর ও ক্লান্তি</li>
-          <li>হৃদরোগ বা রক্তচাপ সমস্যা</li>
-          <li>শ্বাসকষ্ট বা শারীরিক সমস্যা বাড়তে থাকা</li>
+          <li>উচ্চ রক্তচাপ</li>
+          <li>ডায়াবেটিস</li>
+          <li>হৃৎপিণ্ডের সমস্যা</li>
         </ul>
       </div>
-
     </div>
   `;
-
-  // Click effect
-  const boxes = document.querySelectorAll('.illness-box');
-  boxes.forEach(box => {
-    box.addEventListener('click', () => {
-      boxes.forEach(b => b.classList.remove('ring-4', 'ring-indigo-400'));
-      box.classList.add('ring-4', 'ring-indigo-400');
-    });
-  });
 }
 
-// Initial render
+// --- Link click event ---
+links.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const section = link.dataset.section;
+
+    switch (section) {
+      case 'home':
+        renderInitial();
+        break;
+      case 'checkup':
+        renderMentalCheck();
+        break;
+      case 'pregnancy':
+        renderPregnancy();
+        break;
+      case 'seasonal':
+        renderSeasonal();
+        break;
+      case 'common-illness':
+        renderCommonIllness();
+        break;
+      default:
+        renderInitial();
+    }
+
+    // Close panel after click
+    panel.classList.remove('open');
+    chev.classList.remove('rot');
+  });
+});
+
+// --- Initial render ---
 renderInitial();
