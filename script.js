@@ -2,7 +2,7 @@ const dashBtn = document.getElementById('dashBtn');
 const panel = document.getElementById('panel');
 const chev = document.getElementById('chev');
 const main = document.querySelector('main');
-
+const links = document.querySelectorAll('#panel a');
 // Initial render function
 function renderInitial() {
   main.innerHTML = `
@@ -68,11 +68,7 @@ seasonalLink.addEventListener('click', (e) => {
   renderSeasonal();
 });
 
-// Common Illness
-illnessLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderCommonIllness();
-});
+
 
 // === Functions ===
 
@@ -245,7 +241,7 @@ function renderCommonIllness() {
       </div>
     </div>
   `;
-}
+
 
   // Click effect for highlighting box
   const boxes = document.querySelectorAll('.illness-box');
@@ -255,17 +251,18 @@ function renderCommonIllness() {
       box.classList.add('ring-4', 'ring-indigo-400');
     });
   });
-
+}
 // Emergency / জরুরি সেবা
 const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
-emergencyLink.addEventListener('click', (e) => {
+if(emergencyLink){
+ emergencyLink.addEventListener('click', (e) => {
   e.preventDefault();
   
-  // Footer e number show koro
+  
   const emergencyFooter = document.getElementById('emergencyFooter');
   emergencyFooter.classList.remove('hidden');
 
-  // Optionally: Main section e kichu message show koro
+
   main.innerHTML = `
     <div class="flex flex-col items-center justify-center gap-4 p-6 bg-white rounded-3xl shadow-2xl max-w-3xl mx-auto animate-fadein mt-6">
       <h2 class="text-xl font-bold text-red-600">জরুরি সেবা চালু</h2>
@@ -274,6 +271,6 @@ emergencyLink.addEventListener('click', (e) => {
     </div>
   `;
 });
-
+}
 // Initial render
 renderInitial();
