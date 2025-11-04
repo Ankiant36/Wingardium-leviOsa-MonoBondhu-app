@@ -73,18 +73,6 @@ illnessLink.addEventListener('click', (e) => {
   e.preventDefault();
   renderCommonIllness();
 });
-// Click effect for highlighting box
-  const boxes = document.querySelectorAll('.illness-box');
-  boxes.forEach(box => {
-    box.addEventListener('click', () => {
-      boxes.forEach(b => b.classList.remove('ring-4', 'ring-indigo-400'));
-      box.classList.add('ring-4', 'ring-indigo-400');
-    });
-  });
-// Emergency / জরুরি সেবা
-const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
-emergencyLink.addEventListener('click', (e) => {
-  e.preventDefault();
 
 // === Functions ===
 
@@ -122,7 +110,6 @@ function renderMentalCheck() {
       </div>
     </div>
   `;
-
   const emojis = document.querySelectorAll('.emoji');
   emojis.forEach(emoji => {
     emoji.addEventListener('click', () => {
@@ -202,7 +189,7 @@ function renderSeasonal() {
       </div>
       <div class="box p-4 rounded-2xl shadow-lg bg-gray-100 flex flex-col gap-2 w-[45%]">
         <h2 class="text-xl font-bold text-gray-800">❄️ শীতকাল (ডিসেম্বর-ফেব্রুয়ারি)</h2>
-        <div class="small-box">ঠান্ডা ও ফ্লু রোধে গরম কাপড় পরিধান</div>
+       <div class="small-box">ঠান্ডা ও ফ্লু রোধে গরম কাপড় পরিধান</div>
         <div class="small-box">নিউমোনিয়া রোধে সতর্ক থাকা</div>
         <div class="small-box">পুষ্টি বৃদ্ধিতে শীতকালীন শাক-সবজি খাওয়া</div>
       </div>
@@ -258,11 +245,20 @@ function renderCommonIllness() {
       </div>
     </div>
   `;
+
+  // Click effect for highlighting box
+  const boxes = document.querySelectorAll('.illness-box');
+  boxes.forEach(box => {
+    box.addEventListener('click', () => {
+      boxes.forEach(b => b.classList.remove('ring-4', 'ring-indigo-400'));
+      box.classList.add('ring-4', 'ring-indigo-400');
+    });
+  });
 }
- 
-
-
-
+// Emergency / জরুরি সেবা
+const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
+emergencyLink.addEventListener('click', (e) => {
+  e.preventDefault();
   
   // Footer e number show koro
   const emergencyFooter = document.getElementById('emergencyFooter');
@@ -277,5 +273,6 @@ function renderCommonIllness() {
     </div>
   `;
 });
+
 // Initial render
 renderInitial();
