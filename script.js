@@ -181,49 +181,8 @@ seasonalLink.addEventListener('click', (e) => {
   renderSeasonal();
 });
 
-function renderSeasonal() {
-  main.innerHTML = `
-    <div class="seasonal-section flex flex-wrap gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-6xl mx-auto animate-fadein justify-center">
-
-      <div class="box p-4 rounded-2xl shadow-lg bg-blue-50 flex flex-col gap-2 w-[45%]">
-        <h2 class="text-xl font-bold text-blue-700">🌧️ বর্ষা (জুন-সেপ্টেম্বর)</h2>
-        <div class="small-box">ডেঙ্গু প্রতিরোধে মশক নিধন স্প্রে ছেটানো</div>
-        <div class="small-box">জমে থাকা পানি ফেলে দেওয়া</div>
-        <div class="small-box">মশারি ব্যবহার করা</div>
-      </div>
-
-      <div class="box p-4 rounded-2xl shadow-lg bg-gray-100 flex flex-col gap-2 w-[45%]">
-        <h2 class="text-xl font-bold text-gray-800">❄️ শীতকাল (ডিসেম্বর-ফেব্রুয়ারি)</h2>
-        <div class="small-box">ঠান্ডা ও ফ্লু রোধে গরম কাপড় পরিধান </div>
-        <div class="small-box">নিউমোনিয়া রোধে সতর্ক থাকা</div>
-        <div class="small-box">পুষ্টি বৃদ্ধিতে শীতকালীন শাক-সবজি  খাওয়া</div>
-      </div>
-
-      <div class="box p-4 rounded-2xl shadow-lg bg-yellow-50 flex flex-col gap-2 w-[45%]">
-        <h2 class="text-xl font-bold text-yellow-800">☀️ গ্রীষ্মকাল (মার্চ-মে)</h2>
-        <div class="small-box">মুখ মন্ডলে পানি দেওয়া</div>
-        <div class="small-box">পরিষ্কার পানি পান করা</div>
-        <div class="small-box">হিটস্ট্রোক প্রতিরোধে রোদে বা গরমে ছাতা ব্যাবহার করা</div>
-         <div class="small-box">সম্ভব হলে রোদ এড়িয়ে চলা</div>
-      </div>
-
-      <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex flex-col gap-2 w-[45%]">
-        <h2 class="text-xl font-bold text-green-700">📅 সারাবছর</h2>
-        <div class="small-box">হাত ধোয়া নিশ্চিত করা</div>
-        <div class="small-box">খাদ্য নিরাপত্তা নিশ্চিত করা</div>
-      </div>
-
-    </div>
-  `;
-}
-
-// Common Illness
-const illnessLink = Array.from(links).find(a => a.dataset.section === 'common-illness');
-illnessLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  renderCommonIllness();
-});
-
+// Initial render
+renderInitial();
 function renderCommonIllness() {
   main.innerHTML = `
     <div class="common-illness-section flex flex-wrap justify-between gap-6 p-6 bg-white rounded-3xl shadow-2xl max-w-5xl mx-auto animate-fadein">
@@ -234,8 +193,8 @@ function renderCommonIllness() {
         <ul class="mt-2 list-disc list-inside text-yellow-800 text-sm">
           <li>পোলিও – জ্বর হতে পারে</li>
           <li>সর্দি – নাক/গলা বন্ধ হতে পারে</li>
-          <li>হাপানি – শ্বাস নিতে কষ্ট </li>
-          <li>হাম – কানে ব্যথা বা কান ফুলে যেতে পারে</li>
+          <li>হাপানি – শ্বাস নিতে কষ্ট</li>
+          <li>হাম – কানে ব্যথা বা ফুলে যেতে পারে</li>
         </ul>
       </div>
 
@@ -243,9 +202,9 @@ function renderCommonIllness() {
       <div class="box p-4 rounded-2xl shadow-lg bg-green-50 flex-1 min-w-[250px] hover:scale-105 transition-transform cursor-pointer illness-box">
         <h2 class="text-xl font-bold text-green-700">মধ্যবয়স্ক</h2>
         <ul class="mt-2 list-disc list-inside text-green-800 text-sm">
-          <li>সাধারণ জ্বর:মাথাব্যথা</li>
-          <li>বুকে ব্যথা : বুকে ভার অনুভূত হওয়া</li>
-          <li>হালকা সর্দি,কাশি</li>
+          <li>সাধারণ জ্বর: মাথাব্যথা হতে পারে</li>
+          <li>বুকে ভার অনুভূত হওয়া বা ব্যথা</li>
+          <li>হালকা সর্দি ও কাশি</li>
         </ul>
       </div>
 
@@ -262,7 +221,7 @@ function renderCommonIllness() {
     </div>
   `;
 
-  // Click effect
+  // Click effect for highlight
   const boxes = document.querySelectorAll('.illness-box');
   boxes.forEach(box => {
     box.addEventListener('click', () => {
@@ -272,5 +231,9 @@ function renderCommonIllness() {
   });
 }
 
-// Initial render
-renderInitial();
+// Link listener
+const illnessLink = Array.from(links).find(a => a.dataset.section === 'common-illness');
+illnessLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  renderCommonIllness();
+});
