@@ -317,6 +317,60 @@ function renderSocialHealth() {
     </div>
   `;
 }
+const volunteerLink = Array.from(links).find(a => a.dataset.section === 'volunteer');
+volunteerLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  
+  // Main content replace
+  main.innerHTML = `
+    <div class="volunteer-form p-6 bg-white rounded-3xl shadow-2xl max-w-4xl w-full animate-fadein mx-auto">
+      <h2 class="text-2xl font-bold text-indigo-700 text-center mb-4">সেচ্ছাসেবক কর্মী ফর্ম</h2>
+      <form id="volunteerForm" class="flex flex-col gap-4">
+        <label for="name">নাম (বাংলায়):</label>
+        <input type="text" id="name" name="name" placeholder="নাম লিখুন" required class="p-2 border rounded-md">
+
+        <label for="village">গ্রাম/ইউনিয়ন:</label>
+        <input type="text" id="village" name="village" placeholder="গ্রাম বা ইউনিয়নের নাম লিখুন" required class="p-2 border rounded-md">
+
+        <label for="skills">দক্ষতা:</label>
+        <select id="skills" name="skills" multiple required class="p-2 border rounded-md">
+          <option value="mental_health">মানসিক স্বাস্থ্য সহায়তা</option>
+          <option value="first_aid">প্রাথমিক চিকিৎসা</option>
+          <option value="maternal_health">মাতৃস্বাস্থ্য</option>
+          <option value="child_health">শিশুস্বাস্থ্য</option>
+          <option value="chronic_disease">দীর্ঘমেয়াদি রোগ (ডায়াবেটিস/রক্তচাপ)</option>
+        </select>
+
+        <label for="phone">ফোন নম্বর:</label>
+        <input type="tel" id="phone" name="phone" placeholder="ফোন নম্বর লিখুন" required class="p-2 border rounded-md">
+
+        <label for="whatsapp">হোয়াটসঅ্যাপ আছে কি?</label>
+        <select id="whatsapp" name="whatsapp" required class="p-2 border rounded-md">
+          <option value="yes">হ্যাঁ</option>
+          <option value="no">না</option>
+        </select>
+
+        <label for="hours">কোন সময় যোগাযোগ করা যাবে:</label>
+        <input type="text" id="hours" name="hours" placeholder="যেমন: সকাল ৯টা - বিকেল ৫টা" class="p-2 border rounded-md">
+
+        <label for="verification">প্রশিক্ষণ/যাচাই:</label>
+        <input type="text" id="verification" name="verification" placeholder="যেমন: [এনজিও নাম] দ্বারা প্রশিক্ষিত" required class="p-2 border rounded-md">
+
+        <p><em>⭐ এটি কোনো রেটিং বা রিভিউ নয় — শুধুমাত্র যাচাইকৃত ও সহজলভ্য সহায়তা।</em></p>
+
+        <button type="submit" class="mt-2 px-4 py-2 bg-indigo-700 text-white rounded-xl hover:bg-indigo-600 transition">জমা দিন</button>
+      </form>
+    </div>
+  `;
+
+  // Form submission handle (demo)
+  const volunteerForm = document.getElementById('volunteerForm');
+  volunteerForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    alert('ফর্ম জমা হয়েছে! ধন্যবাদ।');
+    volunteerForm.reset();
+  });
+});
 
 // Emergency / জরুরি সেবা
 const emergencyLink = Array.from(links).find(a => a.dataset.section === 'emergency');
